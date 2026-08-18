@@ -253,6 +253,12 @@ export default function Home() {
       </section>
 
       <section className="trust-band" aria-label="Credenciais profissionais">
+        <div className="trust-band__header reveal">
+          <span>Experiência comprovada</span>
+          <h2>
+            Uma trajetória construída com <em>técnica e evolução.</em>
+          </h2>
+        </div>
         <div className="trust-band__inner">
           <div className="trust-item reveal">
             <span className="trust-number">2011</span>

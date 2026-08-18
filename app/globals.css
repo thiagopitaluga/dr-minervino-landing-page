@@ -584,6 +584,10 @@ img {
   color: var(--text);
 }
 
+.trust-band__header {
+  display: none;
+}
+
 .trust-band__inner {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1742,7 +1746,7 @@ footer {
   }
 
   .hero {
-    min-height: 760px;
+    min-height: 700px;
     background-image:
       linear-gradient(180deg, rgba(4, 14, 23, 0.08) 0%, rgba(4, 15, 25, 0.26) 38%, rgba(6, 19, 31, 0.78) 67%, #06131f 82%, #06131f 100%),
       url("/dr-minervino-hero.webp");
@@ -1796,16 +1800,128 @@ footer {
 
   .trust-band__inner {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .trust-band {
+    overflow: hidden;
+    padding: 42px 0 52px;
+    background:
+      radial-gradient(circle at 96% 8%, rgba(74, 151, 187, 0.12), transparent 28%),
+      linear-gradient(180deg, #edf3f1 0%, #e6eeec 100%);
+  }
+
+  .trust-band__header {
+    display: block;
+    width: calc(100% - 36px);
+    margin: 0 auto 25px;
+  }
+
+  .trust-band__header > span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #3d819f;
+    font-size: 8px;
+    font-weight: 750;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+  }
+
+  .trust-band__header > span::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: #4e9abb;
+  }
+
+  .trust-band__header h2 {
+    max-width: 360px;
+    margin: 13px 0 0;
+    color: #173849;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(30px, 8.7vw, 38px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+  }
+
+  .trust-band__header h2 em {
+    color: #438eae;
+    font-style: normal;
   }
 
   .trust-item,
   .trust-item:first-child {
-    min-height: 86px;
+    position: relative;
+    min-height: 104px;
     justify-content: flex-start;
-    padding-left: 22px;
-    border-right: 1px solid rgba(14, 48, 68, 0.12);
-    border-bottom: 1px solid rgba(14, 48, 68, 0.12);
-    border-left: 1px solid rgba(14, 48, 68, 0.12);
+    gap: 17px;
+    padding: 18px 21px;
+    overflow: hidden;
+    border: 1px solid rgba(23, 71, 94, 0.13);
+    border-radius: 12px;
+    background: rgba(247, 251, 250, 0.62);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      0 12px 32px rgba(25, 65, 83, 0.035);
+  }
+
+  .trust-item::after {
+    content: "";
+    position: absolute;
+    top: -34px;
+    right: -42px;
+    width: 116px;
+    height: 116px;
+    border: 1px solid rgba(59, 133, 166, 0.09);
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(59, 133, 166, 0.025);
+    pointer-events: none;
+  }
+
+  .trust-item svg {
+    box-sizing: content-box;
+    width: 21px;
+    height: 21px;
+    flex: 0 0 auto;
+    padding: 9px;
+    border: 1px solid rgba(50, 125, 158, 0.19);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .trust-item > span:last-child {
+    position: relative;
+    z-index: 1;
+    color: #506872;
+    font-size: 10px;
+    line-height: 1.55;
+    letter-spacing: 0.07em;
+  }
+
+  .trust-number {
+    position: relative;
+    z-index: 1;
+    min-width: 61px;
+    color: #173f54;
+    font-size: 30px;
+    letter-spacing: -0.03em;
+  }
+
+  .trust-item:first-child::before {
+    content: "DESDE";
+    position: absolute;
+    top: 23px;
+    left: 22px;
+    color: rgba(47, 112, 140, 0.58);
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  .trust-item:first-child .trust-number {
+    padding-top: 11px;
   }
 
   .specialties,
