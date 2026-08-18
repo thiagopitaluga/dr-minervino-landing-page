@@ -47,10 +47,17 @@ test("keeps production metadata and assets wired", async () => {
     access(new URL("../public/dr-minervino-hero.webp", import.meta.url)),
     access(new URL("../public/dr-minervino-retrato.webp", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
+    access(new URL("../public/kidneys-branco.png", import.meta.url)),
+    access(new URL("../public/favicon.png", import.meta.url)),
   ]);
 
   assert.match(page, /IntersectionObserver/);
   assert.match(page, /data-track="whatsapp-/);
+  assert.match(page, /kidneys-branco\.png/);
+  assert.match(page, /FaInstagram/);
+  assert.match(page, /FaWhatsapp/);
+  assert.match(page, /mapsEmbedUrl/);
+  assert.doesNotMatch(page, /portrait-badge/);
   assert.match(layout, /generateMetadata/);
   assert.match(layout, /\$\{origin\}\/og\.png/);
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/i);

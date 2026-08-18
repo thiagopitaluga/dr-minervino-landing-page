@@ -206,6 +206,13 @@ img {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 24px;
   box-shadow: inset 0 0 22px rgba(113, 193, 232, 0.09);
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .brand strong,
@@ -402,8 +409,9 @@ img {
 
 .hero-actions {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
   margin-top: 34px;
 }
 
@@ -484,6 +492,7 @@ img {
   color: rgba(216, 234, 243, 0.55);
   font-size: 10px;
   letter-spacing: 0.05em;
+  margin-left: 3px;
 }
 
 .hero-credential {
@@ -898,9 +907,21 @@ img {
 }
 
 .journey-step__number {
-  color: rgba(189, 224, 239, 0.36);
-  font-size: 9px;
-  letter-spacing: 0.18em;
+  position: absolute;
+  top: 14px;
+  right: 19px;
+  z-index: 0;
+  color: rgba(189, 224, 239, 0.055);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 76px;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  pointer-events: none;
+}
+
+.journey-step > *:not(.journey-step__number) {
+  position: relative;
+  z-index: 1;
 }
 
 .journey-step__icon {
@@ -1029,36 +1050,6 @@ img {
   color: rgba(217, 237, 246, 0.6);
   font-size: 9px;
   letter-spacing: 0.1em;
-}
-
-.portrait-badge {
-  position: absolute;
-  top: -23px;
-  right: -25px;
-  z-index: 3;
-  display: grid;
-  width: 92px;
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(63, 127, 154, 0.22);
-  border-radius: 50%;
-  background: #edf2f0;
-  color: #286c89;
-  box-shadow: 0 16px 40px rgba(15, 55, 75, 0.12);
-}
-
-.portrait-badge::before {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border: 1px solid rgba(58, 127, 157, 0.14);
-  border-radius: inherit;
-}
-
-.portrait-badge span {
-  margin-top: -22px;
-  font-size: 8px;
-  letter-spacing: 0.18em;
 }
 
 .about-content h2 {
@@ -1259,57 +1250,31 @@ img {
     linear-gradient(145deg, #0c2b3e, #061824);
 }
 
-.map-grid {
+.map-frame {
   position: absolute;
   inset: 0;
-  opacity: 0.32;
-  background-image:
-    linear-gradient(rgba(178, 222, 241, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(178, 222, 241, 0.08) 1px, transparent 1px);
-  background-size: 45px 45px;
-  transform: rotate(18deg) scale(1.35);
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.65) saturate(0.72) contrast(1.06) brightness(0.92);
+  transform: scale(1.015);
 }
 
-.map-route {
+.map-shade {
   position: absolute;
-  border: 2px solid rgba(124, 199, 231, 0.23);
-  border-radius: 50%;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(6, 24, 36, 0.08), rgba(6, 24, 36, 0.02) 48%, rgba(5, 20, 31, 0.76) 100%),
+    linear-gradient(90deg, rgba(8, 36, 52, 0.18), transparent 38%);
 }
 
-.map-route--one {
-  top: -25%;
-  left: 9%;
-  width: 75%;
-  height: 110%;
-  transform: rotate(27deg);
-}
-
-.map-route--two {
-  right: -20%;
-  bottom: 2%;
-  width: 88%;
-  height: 54%;
-  transform: rotate(-20deg);
-}
-
-.map-pin-pulse {
+.location-visual::after {
+  content: "";
   position: absolute;
-  top: 41%;
-  left: 56%;
-  display: grid;
-  width: 66px;
-  aspect-ratio: 1;
-  place-items: center;
-  border: 1px solid rgba(166, 222, 245, 0.43);
-  border-radius: 50%;
-  background: rgba(96, 182, 221, 0.17);
-  color: #d7f2fd;
-  box-shadow: 0 0 0 16px rgba(119, 197, 232, 0.06), 0 0 0 34px rgba(119, 197, 232, 0.035);
-  animation: map-pulse 2.8s ease-in-out infinite;
-}
-
-@keyframes map-pulse {
-  50% { box-shadow: 0 0 0 22px rgba(119, 197, 232, 0.035), 0 0 0 48px rgba(119, 197, 232, 0.015); }
+  inset: 16px;
+  border: 1px solid rgba(220, 242, 250, 0.24);
+  pointer-events: none;
 }
 
 .map-card {
@@ -1317,36 +1282,52 @@ img {
   right: 32px;
   bottom: 32px;
   left: 32px;
-  padding: 21px 23px;
-  border: 1px solid rgba(191, 228, 243, 0.17);
-  border-radius: 3px;
-  background: rgba(5, 20, 31, 0.69);
-  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 19px;
+  border: 1px solid rgba(205, 235, 247, 0.24);
+  border-radius: 5px;
+  background: rgba(5, 22, 34, 0.82);
+  box-shadow: 0 18px 46px rgba(0, 9, 15, 0.2);
+  backdrop-filter: blur(16px) saturate(130%);
 }
 
-.map-card strong,
-.map-card span,
-.map-card small {
+.map-card__icon {
+  display: grid;
+  width: 44px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(171, 220, 241, 0.27);
+  border-radius: 50%;
+  color: #c8eefa;
+  box-shadow: inset 0 0 20px rgba(105, 190, 228, 0.08);
+}
+
+.map-card__copy {
   display: block;
 }
 
-.map-card strong {
+.map-card__copy > * {
+  display: block;
+}
+
+.map-card__copy strong {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 18px;
   font-weight: 400;
 }
 
-.map-card span {
+.map-card__copy > span {
   margin-top: 5px;
-  color: rgba(217, 237, 246, 0.62);
+  color: rgba(223, 241, 248, 0.72);
   font-size: 10px;
 }
 
-.map-card small {
-  margin-top: 15px;
-  padding-top: 13px;
-  border-top: 1px solid rgba(205, 234, 246, 0.1);
-  color: rgba(185, 218, 232, 0.43);
+.map-card__copy small {
+  margin-top: 7px;
+  color: rgba(185, 218, 232, 0.52);
   font-size: 8px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1551,6 +1532,14 @@ footer {
   font-size: 10px;
 }
 
+.footer-contact a:first-of-type svg {
+  color: #78c8a7;
+}
+
+.footer-contact a:nth-of-type(2) svg {
+  color: #a7d8eb;
+}
+
 .footer-legal {
   justify-self: end;
   max-width: 380px;
@@ -1729,7 +1718,11 @@ footer {
 
   .brand-mark {
     width: 38px;
-    font-size: 21px;
+  }
+
+  .brand-mark img {
+    width: 24px;
+    height: 24px;
   }
 
   .brand strong {
@@ -1749,50 +1742,51 @@ footer {
   }
 
   .hero {
-    min-height: 850px;
+    min-height: 760px;
     background-image:
-      linear-gradient(180deg, rgba(4, 14, 23, 0.34) 0%, rgba(4, 15, 25, 0.82) 45%, #06131f 67%, #06131f 100%),
+      linear-gradient(180deg, rgba(4, 14, 23, 0.18) 0%, rgba(4, 15, 25, 0.52) 31%, #06131f 51%, #06131f 100%),
       url("/dr-minervino-hero.webp");
-    background-position: 64% top;
-    background-size: auto 545px;
+    background-position: 84% top;
+    background-size: auto 400px;
     background-repeat: no-repeat;
   }
 
   .hero-content {
     width: calc(100% - 36px);
-    padding-top: 385px;
-    padding-bottom: 67px;
+    padding-top: 292px;
+    padding-bottom: 54px;
   }
 
   .hero-kicker {
-    margin-bottom: 18px;
+    margin-bottom: 13px;
     font-size: 8px;
   }
 
   .hero h1 {
-    font-size: clamp(40px, 11.6vw, 55px);
-    line-height: 1;
+    font-size: clamp(31px, 8.6vw, 39px);
+    line-height: 0.99;
   }
 
   .hero-copy {
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 1.55;
+    margin-top: 13px;
+    font-size: 12px;
+    line-height: 1.46;
   }
 
   .hero-actions {
     align-items: flex-start;
     flex-direction: column;
-    gap: 11px;
-    margin-top: 26px;
+    gap: 8px;
+    margin-top: 17px;
   }
 
   .primary-cta {
     width: 100%;
+    min-height: 52px;
   }
 
   .hero-credential {
-    margin-top: 27px;
+    margin-top: 21px;
   }
 
   .hero-index,
@@ -1892,6 +1886,12 @@ footer {
     margin-top: 31px;
   }
 
+  .journey-step__number {
+    top: 12px;
+    right: 16px;
+    font-size: 70px;
+  }
+
   .journey-quote {
     gap: 14px;
     margin-top: 50px;
@@ -1925,12 +1925,6 @@ footer {
     font-size: 13px;
   }
 
-  .portrait-badge {
-    top: -20px;
-    right: -4px;
-    width: 78px;
-  }
-
   .decision-grid {
     gap: 36px;
   }
@@ -1957,15 +1951,15 @@ footer {
     min-height: 390px;
   }
 
-  .map-pin-pulse {
-    top: 32%;
-    left: 49%;
-  }
-
   .map-card {
     right: 18px;
     bottom: 18px;
     left: 18px;
+    padding: 14px;
+  }
+
+  .map-card__icon {
+    width: 39px;
   }
 
   .faq-grid {

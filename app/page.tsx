@@ -7,7 +7,6 @@ import {
   Award,
   BadgeCheck,
   CalendarCheck,
-  Camera,
   Check,
   ChevronDown,
   CircleCheck,
@@ -23,6 +22,7 @@ import {
   Stethoscope,
   UserRoundCheck,
 } from "lucide-react";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa6";
 
 const whatsappUrl =
   "https://wa.me/5598988077189?text=Ol%C3%A1%2C%20vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Minervino.";
@@ -31,6 +31,9 @@ const instagramUrl = "https://www.instagram.com/dr.minervino_urologista/";
 
 const mapsUrl =
   "https://www.google.com/maps/search/?api=1&query=Urocenter%20SLZ%20Av.%20Daniel%20de%20La%20Touche%20987%20S%C3%A3o%20Lu%C3%ADs%20MA";
+
+const mapsEmbedUrl =
+  "https://www.google.com/maps?q=UroCenter%20SLZ%2C%20Avenida%20Daniel%20de%20La%20Touche%2C%20987%2C%20S%C3%A3o%20Lu%C3%ADs%20-%20MA&output=embed";
 
 const specialties = [
   {
@@ -174,7 +177,9 @@ export default function Home() {
       <nav className={`site-nav ${navScrolled ? "site-nav--scrolled" : ""}`} aria-label="Navegação principal">
         <div className="nav-inner">
           <a className="brand" href="#top" aria-label="Dr. Minervino — início">
-            <span className="brand-mark">M</span>
+            <span className="brand-mark">
+              <img src="/kidneys-branco.png" alt="" />
+            </span>
             <span>
               <strong>Dr. Minervino</strong>
               <small>Urologista</small>
@@ -211,8 +216,8 @@ export default function Home() {
           </h1>
 
           <p className="hero-copy reveal is-visible reveal-delay-2">
-            Diagnóstico criterioso, tecnologia e uma condução clara para cuidar
-            da sua saúde com segurança, discrição e tranquilidade.
+            Precisão, tecnologia e uma condução clara para cuidar da sua saúde
+            com segurança e discrição.
           </p>
 
           <div className="hero-actions reveal is-visible reveal-delay-3">
@@ -221,7 +226,7 @@ export default function Home() {
               <ArrowUpRight aria-hidden="true" size={19} strokeWidth={1.8} />
             </a>
             <span className="cta-note">
-              <ShieldCheck aria-hidden="true" size={14} />
+              <FaWhatsapp aria-hidden="true" size={14} />
               Atendimento discreto pelo WhatsApp
             </span>
           </div>
@@ -367,10 +372,6 @@ export default function Home() {
                 <small>Urologista · CRM-MA 5051 · RQE 1487</small>
               </div>
             </div>
-            <div className="portrait-badge" aria-hidden="true">
-              <Award size={22} strokeWidth={1.35} />
-              <span>TISBU</span>
-            </div>
           </div>
 
           <div className="about-content reveal reveal-delay-1">
@@ -474,17 +475,25 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="location-visual" aria-hidden="true">
-              <div className="map-grid" />
-              <div className="map-route map-route--one" />
-              <div className="map-route map-route--two" />
-              <div className="map-pin-pulse">
-                <MapPin size={28} strokeWidth={1.7} />
-              </div>
+            <div className="location-visual">
+              <iframe
+                className="map-frame"
+                src={mapsEmbedUrl}
+                title="Mapa da UroCenter SLZ em São Luís"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+              <div className="map-shade" aria-hidden="true" />
               <div className="map-card">
-                <strong>UroCenter SLZ</strong>
-                <span>Shopping da Ilha · Torre 2</span>
-                <small>Atendimento com horário agendado</small>
+                <span className="map-card__icon">
+                  <MapPin aria-hidden="true" size={21} strokeWidth={1.6} />
+                </span>
+                <span className="map-card__copy">
+                  <strong>UroCenter SLZ</strong>
+                  <span>Shopping da Ilha · Torre 2</span>
+                  <small>São Luís — MA</small>
+                </span>
               </div>
             </div>
           </div>
@@ -541,7 +550,9 @@ export default function Home() {
         <div className="footer-inner">
           <div className="footer-brand">
             <a className="brand" href="#top">
-              <span className="brand-mark">M</span>
+              <span className="brand-mark">
+                <img src="/kidneys-branco.png" alt="" />
+              </span>
               <span>
                 <strong>Dr. Minervino</strong>
                 <small>Urologista</small>
@@ -552,9 +563,12 @@ export default function Home() {
 
           <div className="footer-contact">
             <span>Contato</span>
-            <a href={whatsappUrl} target="_blank" rel="noreferrer">(98) 98807-7189</a>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <FaWhatsapp aria-hidden="true" size={17} />
+              (98) 98807-7189
+            </a>
             <a href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram do Dr. Minervino">
-              <Camera aria-hidden="true" size={17} />
+              <FaInstagram aria-hidden="true" size={17} />
               @dr.minervino_urologista
             </a>
           </div>
@@ -574,7 +588,7 @@ export default function Home() {
         aria-label="Agendar consulta pelo WhatsApp"
         data-track="whatsapp-floating"
       >
-        <MessageCircle aria-hidden="true" size={20} />
+        <FaWhatsapp aria-hidden="true" size={20} />
         <span>Agendar consulta</span>
       </a>
     </main>
