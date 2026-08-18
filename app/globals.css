@@ -1466,9 +1466,14 @@ img {
   position: relative;
   overflow: hidden;
   padding: 145px 0;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(74, 166, 209, 0.2), transparent 42%),
-    linear-gradient(140deg, #0b283b, #06131f 62%);
+  background-image:
+    radial-gradient(circle at 50% 12%, rgba(76, 170, 211, 0.18), transparent 43%),
+    linear-gradient(90deg, rgba(4, 14, 23, 0.82) 0%, rgba(5, 17, 27, 0.68) 48%, rgba(4, 14, 23, 0.76) 100%),
+    linear-gradient(180deg, rgba(3, 11, 18, 0.18), rgba(3, 12, 20, 0.68)),
+    url("/final-consulta.webp");
+  background-position: center, center, center, center 46%;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
 }
 
@@ -2139,6 +2144,15 @@ footer {
 
   .final-cta h2 {
     font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .final-cta {
+    background-image:
+      radial-gradient(circle at 50% 10%, rgba(76, 170, 211, 0.16), transparent 42%),
+      linear-gradient(180deg, rgba(4, 14, 23, 0.62) 0%, rgba(4, 15, 24, 0.75) 54%, rgba(3, 12, 20, 0.9) 100%),
+      url("/final-consulta.webp");
+    background-position: center, center, 63% center;
+    background-size: cover;
   }
 
   .final-cta::before,
