@@ -39,6 +39,7 @@ const specialties = [
   {
     icon: ScanLine,
     number: "01",
+    image: "/specialty-prostata.webp",
     title: "Próstata & prevenção",
     text: "Avaliação preventiva, investigação de alterações e cuidado individualizado da saúde da próstata.",
     tags: ["Check-up urológico", "Próstata aumentada", "Oncologia urológica"],
@@ -46,6 +47,7 @@ const specialties = [
   {
     icon: Droplets,
     number: "02",
+    image: "/specialty-rins.webp",
     title: "Rins & trato urinário",
     text: "Diagnóstico e condução de sintomas urinários, cálculos renais e alterações do trato urinário.",
     tags: ["Cálculos renais", "Sintomas urinários", "Rins e bexiga"],
@@ -53,6 +55,7 @@ const specialties = [
   {
     icon: HeartPulse,
     number: "03",
+    image: "/specialty-saude-sexual.webp",
     title: "Saúde sexual masculina",
     text: "Uma abordagem reservada para questões que afetam confiança, bem-estar e qualidade de vida.",
     tags: ["Disfunção erétil", "Infertilidade", "Saúde do homem"],
@@ -60,6 +63,7 @@ const specialties = [
   {
     icon: Microscope,
     number: "04",
+    image: "/specialty-cirurgia.webp",
     title: "Cirurgia urológica",
     text: "Indicação criteriosa e técnicas modernas para uma condução mais precisa de cada caso.",
     tags: ["Cirurgia robótica", "Vasectomia", "Procedimentos"],
@@ -293,6 +297,13 @@ export default function Home() {
           <div className="specialty-grid">
             {specialties.map((item, index) => (
               <article className={`specialty-card reveal reveal-delay-${index % 3}`} key={item.title}>
+                <img
+                  className="specialty-card__image"
+                  src={item.image}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
                 <div className="card-topline">
                   <span>{item.number}</span>
                   <item.icon aria-hidden="true" size={28} strokeWidth={1.35} />
