@@ -1744,16 +1744,16 @@ footer {
   .hero {
     min-height: 760px;
     background-image:
-      linear-gradient(180deg, rgba(4, 14, 23, 0.18) 0%, rgba(4, 15, 25, 0.52) 31%, #06131f 51%, #06131f 100%),
+      linear-gradient(180deg, rgba(4, 14, 23, 0.08) 0%, rgba(4, 15, 25, 0.26) 38%, rgba(6, 19, 31, 0.78) 67%, #06131f 82%, #06131f 100%),
       url("/dr-minervino-hero.webp");
     background-position: 84% top;
-    background-size: auto 400px;
+    background-size: auto 420px;
     background-repeat: no-repeat;
   }
 
   .hero-content {
     width: calc(100% - 36px);
-    padding-top: 292px;
+    padding-top: 248px;
     padding-bottom: 54px;
   }
 
@@ -1763,7 +1763,7 @@ footer {
   }
 
   .hero h1 {
-    font-size: clamp(31px, 8.6vw, 39px);
+    font-size: clamp(37px, 10.3vw, 47px);
     line-height: 0.99;
   }
 
